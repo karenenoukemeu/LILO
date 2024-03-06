@@ -8,11 +8,13 @@ import pandas as pd
 import numpy as np
 
 from PIL import Image
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Dense
 
 file_name = "{name}_{num:03d}.png"
-data_dir  = "../../misc/"
+data_dir  = "../training/"
 data_name = "MoonRocks"
-data_size = 20
+data_size = 1000
 
 def process_image(image):
     # Get the benchmark from metadata
@@ -68,3 +70,16 @@ print("\n---------- Data After Normalization ----------")
 print(stencil.format("  Training Data", x_train.shape, y_train.shape, x_train.max(), y_train.max()))
 print(stencil.format("Validation Data", x_valid.shape, y_valid.shape, x_valid.max(), y_valid.max()))
 
+model = Sequential()
+
+model.add(Dense(units=512, activation='relu', input_shape=(1024 ** 2,)))
+model.add(Dense(units = 512, activation='relu'))
+model.add(Dense(units = 2, activation='softmax'))
+
+print(model.summary())
+
+model.compile(loss='categorical_crossentropy', metrics=['accuracy'])
+
+history = model.fit(
+    x_train, y_train, epochs=5, verbose=1, validation_data=(x_valid, y_valid)
+)
