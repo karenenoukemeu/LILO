@@ -78,7 +78,7 @@ model.add(Dense(units = 2, activation='softmax'))
 
 print(model.summary())
 
-model.compile(loss='categorical_crossentropy', metrics=['accuracy'])
+model.compile(loss='categorical_crossentropy', metrics=['categorical_accuracy'])
 
 history = model.fit(
     x_train, y_train, epochs=5, verbose=1, validation_data=(x_valid, y_valid)

@@ -1,2 +1,2 @@
-resources/data/script/ohana
-resources/data/script/Ohana
+ohana/*
+resources/data/training/*.png
