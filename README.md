@@ -15,3 +15,7 @@ For development outside of the Bridges-2 interface, you can create a Python Virt
 To activate the venv just type ``` source resources/env/ohana/bin/activate ``` in the base directory.
 
 Deactivating the venv just requires you to type ``` deactivate ```
+
+### Install the required Packages in the Virtual Environment
+
+Type ``` pip install -r resources/env/requirements.txt ```
